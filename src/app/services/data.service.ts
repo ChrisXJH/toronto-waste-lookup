@@ -28,8 +28,14 @@ export class DataService implements OnDestroy {
     this.favourites.push(item);
   }
 
-  removeFromFavourites(targetId: string) {
-    this.favourites = this.favourites.filter(item => item.id !== targetId);
+  removeFromFavourites(targetItem: any) {
+    this.favourites = this.favourites.filter(
+      item => item.title !== targetItem.title
+    );
+  }
+
+  isFavourite(targetItem: any) {
+    return this.favourites.some(item => item.title === targetItem.title);
   }
 
   searchWaste(filter: string) {
@@ -62,9 +68,7 @@ export class DataService implements OnDestroy {
     return this.httpGet(this.backendUrl).pipe(
       map((items: any) => {
         items.map(item => {
-          item.isFavourite = this.favourites.some(
-            favItem => favItem.id === item.id
-          );
+          item.isFavourite = this.isFavourite(item);
           return item;
         });
         return items;

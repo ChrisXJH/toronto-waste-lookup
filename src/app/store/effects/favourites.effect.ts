@@ -26,7 +26,7 @@ export class FavouritesEffects {
   removeFavourite$: Observable<any> = this.actions$.pipe(
     ofType(fromAction.REMOVE_FAVOURITE),
     map((action: any) => {
-      this.dataService.removeFromFavourites(action.payload.id);
+      this.dataService.removeFromFavourites(action.payload);
       return new fromAction.UpdateFavouriteSuccess(
         this.dataService.getFavourites()
       );
