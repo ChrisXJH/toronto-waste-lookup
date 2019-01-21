@@ -34,7 +34,7 @@ export class DataService implements OnDestroy {
     );
   }
 
-  isFavourite(targetItem: any) {
+  private isFavourite(targetItem: any) {
     return this.favourites.some(item => item.title === targetItem.title);
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import * as fromStore from '../../store';
 
@@ -16,7 +17,8 @@ export class FavouritesComponent implements OnInit {
 
   ngOnInit() {
     this.favourites$ = this.store.pipe(
-      select(fromStore.getFavouritesEntitiesSelector)
+      select(fromStore.getFavouritesEntitiesSelector),
+      map(data => data.favourites)
     );
   }
 }

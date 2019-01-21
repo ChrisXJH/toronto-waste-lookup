@@ -20,18 +20,21 @@ export class WasteItemComponent implements OnInit, OnDestroy {
     this.subscription = this.store
       .pipe(
         select(fromStore.getFavouritesEntitiesSelector),
-        tap(
-          favourites =>
-            (this.item.isFavourite = favourites.some(
-              item => item.title === this.item.title
-            ))
-        )
+        tap(data => this.handleFavouritesUpdate(data))
       )
       .subscribe();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  private handleFavouritesUpdate(data) {
+    if (data.newItem) {
+      this.item.isFavourite = data.newItem.title === this.item.title;
+    } else if (data.removedItem && data.removedItem.title === this.item.title) {
+      this.item.isFavourite = false;
+    }
   }
 
   decode(str) {

@@ -16,9 +16,9 @@ export class FavouritesEffects {
     ofType(fromAction.ADD_FAVOURITE),
     map((action: any) => {
       this.dataService.addToFavourites(action.payload);
-      return new fromAction.UpdateFavouriteSuccess(
-        this.dataService.getFavourites()
-      );
+      const newItem = action.payload;
+      const favourites = this.dataService.getFavourites();
+      return new fromAction.UpdateFavouriteSuccess({ newItem, favourites });
     })
   );
 
@@ -27,9 +27,9 @@ export class FavouritesEffects {
     ofType(fromAction.REMOVE_FAVOURITE),
     map((action: any) => {
       this.dataService.removeFromFavourites(action.payload);
-      return new fromAction.UpdateFavouriteSuccess(
-        this.dataService.getFavourites()
-      );
+      const favourites = this.dataService.getFavourites();
+      const removedItem = action.payload;
+      return new fromAction.UpdateFavouriteSuccess({ favourites, removedItem });
     })
   );
 }
