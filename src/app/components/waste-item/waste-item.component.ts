@@ -30,8 +30,8 @@ export class WasteItemComponent implements OnInit, OnDestroy {
   }
 
   private handleFavouritesUpdate(data) {
-    if (data.newItem) {
-      this.item.isFavourite = data.newItem.title === this.item.title;
+    if (data.newItem && data.newItem.title === this.item.title) {
+      this.item.isFavourite = true;
     } else if (data.removedItem && data.removedItem.title === this.item.title) {
       this.item.isFavourite = false;
     }
@@ -52,10 +52,8 @@ export class WasteItemComponent implements OnInit, OnDestroy {
 
   handleFavourite() {
     if (this.item.isFavourite) {
-      this.item.isFavourite = false;
       this.store.dispatch(new fromStore.RemoveFavourite(this.item));
     } else {
-      this.item.isFavourite = true;
       this.store.dispatch(new fromStore.AddFavourite(this.item));
     }
   }
