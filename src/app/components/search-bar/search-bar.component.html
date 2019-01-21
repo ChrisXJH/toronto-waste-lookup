@@ -1,14 +1,19 @@
 <div class="search-bar container-fluid">
   <form (submit)="handleSubmit($event)">
-    <input
-      type="text"
-      name="input"
-      placeholder="Enter keyword ..."
-      (change)="handleTextboxUpdate($event)"
-    />
-    <button id="submit-button" type="submit">
-      <i class="fas fa-search"></i>
-    </button>
-    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-11">
+        <input
+          type="text"
+          name="input"
+          placeholder="Enter keyword ..."
+          (change)="handleTextboxUpdate($event)"
+        />
+      </div>
+      <div class="col-md-1">
+        <button id="submit-button" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
   </form>
 </div>

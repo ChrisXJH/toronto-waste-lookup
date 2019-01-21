@@ -1,11 +1,12 @@
 .search-bar {
   padding: 1em;
+  background-color: #fff;
 }
 
 input {
   float: left;
   border: 1px solid #ddd;
-  width: 90%;
+  width: 100%;
   margin-right: 1em;
   height: 48px;
   font-size: 1em;
@@ -30,8 +31,4 @@ button i {
   font-size: 2em;
   color: #fff;
   transform: scaleX(-1);
-}
-
-.clearfix {
-  clear: both;
 }

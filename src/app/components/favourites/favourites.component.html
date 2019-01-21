@@ -1,10 +1,10 @@
-<ng-container *ngIf="(favourites$ | async) as favourites">
-  <div class="favourites-container container-fluid">
-    <h3>Favourites</h3>
+<div class="favourites-container container-fluid">
+  <h3>Favourites</h3>
+  <ng-container *ngIf="(favourites$ | async) as favourites">
     <ul>
       <li *ngFor="let item of favourites">
         <app-waste-item [item]="item"></app-waste-item>
       </li>
     </ul>
-  </div>
-</ng-container>
+  </ng-container>
+</div>
