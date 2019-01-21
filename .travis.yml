@@ -22,6 +22,6 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: dist/waste-lookup
+  local_dir: dist/toronto-waste-lookup
   on:
     branch: master
