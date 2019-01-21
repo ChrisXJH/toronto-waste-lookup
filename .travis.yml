@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - '9'
+dist: trusty
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install -g yarn
+  - yarn install
+
+script:
+  - yarn lint
+  - npm run build-github
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/waste-lookup
+  on:
+    branch: master

@@ -1,0 +1,17 @@
+.star-icon {
+  color: #aaa;
+  cursor: pointer;
+}
+
+.star-icon.favourite {
+  color: #4b9662;
+}
+
+.icon-container,
+.title-container {
+  display: inline-block;
+}
+
+.icon-container {
+  margin-right: 1em;
+}

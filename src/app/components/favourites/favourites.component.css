@@ -1,0 +1,13 @@
+.favourites-container {
+  padding: 1em;
+}
+
+li {
+  list-style: none;
+}
+
+h3 {
+  color: #4b9662;
+  font-weight: bold;
+  margin-bottom: 1em;
+}

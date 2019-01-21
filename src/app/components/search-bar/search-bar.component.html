@@ -1,0 +1,14 @@
+<div class="search-bar container-fluid">
+  <form (submit)="handleSubmit($event)">
+    <input
+      type="text"
+      name="input"
+      placeholder="Enter keyword ..."
+      (change)="handleTextboxUpdate($event)"
+    />
+    <button id="submit-button" type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+    <div class="clearfix"></div>
+  </form>
+</div>

@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  backendUrl:
+    'https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000'
 };
 
 /*

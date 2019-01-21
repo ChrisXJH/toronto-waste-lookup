@@ -1,0 +1,12 @@
+<div class="results-container container-fluid">
+  <ng-container
+    *ngIf="!(isLoading$ | async) && (data$ | async) as data; else loading"
+  >
+    <ul>
+      <li *ngFor="let item of data">
+        <app-waste-item [item]="item"></app-waste-item>
+      </li>
+    </ul>
+  </ng-container>
+</div>
+<ng-template #loading>Loading...</ng-template>

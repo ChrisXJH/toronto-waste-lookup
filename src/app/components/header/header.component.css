@@ -1,0 +1,13 @@
+div {
+  background: -webkit-linear-gradient(left, #2c5791, #499364);
+  background: -o-linear-gradient(right, #2c5791, #499364);
+  background: -moz-linear-gradient(right, #2c5791, #499364);
+  background: linear-gradient(to right, #2c5791, #499364);
+}
+
+h1 {
+  font-size: 2.6em;
+  padding: 1em 0;
+  text-align: center;
+  color: #fff;
+}
