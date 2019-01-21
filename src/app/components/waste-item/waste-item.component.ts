@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Unsubscribable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import * as fromStore from '../../store';
 
@@ -8,12 +10,29 @@ import * as fromStore from '../../store';
   templateUrl: './waste-item.component.html',
   styleUrls: ['./waste-item.component.css']
 })
-export class WasteItemComponent implements OnInit {
+export class WasteItemComponent implements OnInit, OnDestroy {
   @Input() item: any = {};
+  subscription: Unsubscribable;
 
   constructor(private store: Store<fromStore.StoreState>) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.subscription = this.store
+      .pipe(
+        select(fromStore.getFavouritesEntitiesSelector),
+        tap(
+          favourites =>
+            (this.item.isFavourite = favourites.some(
+              item => item.title === this.item.title
+            ))
+        )
+      )
+      .subscribe();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
   decode(str) {
     if (str === undefined) {
